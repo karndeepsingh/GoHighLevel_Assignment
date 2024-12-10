@@ -31,12 +31,5 @@ def main():
         print(f"RMSE: {rmse}")
         print(f"MAPE: {mape}")
 
-    model = LinearRegression(featuresCol="features", labelCol="Impact")
-    best_model, predictions, rmse, mape = train_model(train_data, test_data, model, config)
-
-   # Print results
-    print(f"RMSE: {rmse}")
-    print(f"MAPE: {mape}")
-
 if __name__ == "__main__":
     main()
