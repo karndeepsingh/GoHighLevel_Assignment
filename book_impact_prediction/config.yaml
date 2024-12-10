@@ -1,0 +1,31 @@
+app:
+  name: "Book Impact Prediction"
+  experiment_name: "Book_impact_Prediction_Experiment"
+  tracking_uri: "mlruns"
+
+spark:
+  master: "local[*]"
+  app_name: "MLFlow_Autologging_PySpark"
+  executor_memory: "16g"
+  driver_memory: "16g"
+  executor_cores: 4
+  num_executors: 4
+
+data:
+  path: "data/books_task.csv"
+  label_column: "Impact"
+  text_columns: ["Title", "description"]
+  categorical_columns: ["categories", "authors", "publisher"]
+  date_column: "publishedDate"
+
+model:
+  features_column: "features"
+  label_column: "Impact"
+  prediction_column: "prediction"
+  num_folds: 2
+
+evaluation:
+  metrics: ["RMSE", "MAPE"]
+  training_time_evaluation:
+    enable: true
+    worker_configs: [1, 2, 4] 
